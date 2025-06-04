@@ -14,39 +14,41 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
- // Auto-slide functionality with pause on hover
- useEffect(() => {
-  const interval = setInterval(() => {
-    if (!isHovered) {
-      setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
-    }
-  }, 5000); // Change slide every 5 seconds
-  
-  return () => clearInterval(interval);
-}, [isHovered]);
+  // Auto-slide functionality with pause on hover
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isHovered) {
+        setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
+      }
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
-const openTab = (tabId) => {
-  setActiveTab(tabId);
-};
+  const openTab = (tabId) => {
+    setActiveTab(tabId);
+  };
 
-const nextSlide = () => {
-  setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
-};
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
+  };
 
-const prevSlide = () => {
-  setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1));
-};
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1));
+  };
 
-const goToSlide = (index) => {
-  setCurrentSlide(index);
-};
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
 
   return (
     <div className="font-sans">
-     
-
       {/* Carousel */}
-      <div className="relative w-full">
+      <div 
+        className="relative w-full"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div className="relative overflow-hidden rounded-lg">
           <div 
             className="flex transition-transform duration-500 ease-in-out" 
@@ -359,62 +361,54 @@ const goToSlide = (index) => {
         </div>
       </section>
 
+      {/* Specialist Section */}
+      <section className="flex flex-col items-center p-6 bg-white">
+        <h2 className="text-2xl font-semibold text-center">Zemienie Specialties</h2>
+        <p className="hidden px-6 mt-2 text-center text-gray-600 md:px-12 md:block">
+          Zemienie specializes in providing high-quality healthcare solutions with a focus on innovation and patient care.
+        </p>
 
- {/* Specialist Section */}
-<section className="flex flex-col items-center p-6 bg-white">
-  {/* Title */}
-  <h2 className="text-2xl font-semibold text-center">Zemienie Specialties</h2>
-  <p className="hidden px-6 mt-2 text-center text-gray-600 md:px-12 md:block">
-    Zemienie specializes in providing high-quality healthcare solutions with a focus on innovation and patient care.
-  </p>
+        <div className="grid w-full grid-cols-1 gap-4 px-4 pt-4 pb-4 mt-6 sm:grid-cols-2 md:grid-cols-4 md:px-24">
+          <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
+            <FaSpa className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Acupuncture Therapy</span>
+          </div>
+          <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
+            <FaProcedures className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Urology</span>
+          </div>
+          <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
+            <FaLungs className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Thoracic Surgery</span>
+          </div>
+          <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
+            <FaUserInjured className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">General Surgery</span>
+          </div>
+          <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
+            <FaMicrophone className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Speech Therapy</span>
+          </div>
+          <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
+            <FaVial className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Pathology</span>
+          </div>
+          <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
+            <FaDiagnoses className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Pain Medicine</span>
+          </div>
+          <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
+            <FaUserMd className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
+            <span className="text-lg font-semibold text-black">Plastic Surgery</span>
+          </div>
+        </div>
 
-  {/* Specialist Grid */}
-  <div className="grid w-full grid-cols-1 gap-4 px-4 pt-4 pb-4 mt-6 sm:grid-cols-2 md:grid-cols-4 md:px-24">
-    {/* Specialist Cards */}
-    <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
-      <FaSpa className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Acupuncture Therapy</span>
-    </div>
-    <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
-      <FaProcedures className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Urology</span>
-    </div>
-    <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
-      <FaLungs className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Thoracic Surgery</span>
-    </div>
-    <div className="flex items-center w-full p-4 bg-white border rounded-lg shadow-md">
-      <FaUserInjured className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">General Surgery</span>
-    </div>
-    <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
-      <FaMicrophone className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Speech Therapy</span>
-    </div>
-    <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
-      <FaVial className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Pathology</span>
-    </div>
-    <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
-      <FaDiagnoses className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Pain Medicine</span>
-    </div>
-    <div className="flex items-center hidden w-full p-4 bg-white border rounded-lg shadow-md sm:flex">
-      <FaUserMd className="p-4 mr-4 text-5xl text-white bg-blue-600 rounded" />
-      <span className="text-lg font-semibold text-black">Plastic Surgery</span>
-    </div>
-  </div>
-
-  {/* View All Specialist Button */}
-  <Link to="/specialist">
-    <button className="px-6 py-3 mt-6 font-semibold text-white transition duration-300 bg-blue-600 rounded-md shadow-md hover:bg-blue-700">
-      View All Specialist
-    </button>
-  </Link>
-</section>
-
-
-     
+        <Link to="/specialist">
+          <button className="px-6 py-3 mt-6 font-semibold text-white transition duration-300 bg-blue-600 rounded-md shadow-md hover:bg-blue-700">
+            View All Specialist
+          </button>
+        </Link>
+      </section>
     </div>
   );
 };

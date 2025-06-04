@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { 
   FaTasks,
   FaDollarSign,
@@ -12,13 +11,8 @@ import {
 } from 'react-icons/fa';
 
 const RevenuePage = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
-
   return (
     <div className="font-sans">
-     
       {/* Intro Section */}
       <section className="relative py-12 overflow-hidden text-center text-white bg-blue-500 sm:py-16 lg:py-20">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -130,8 +124,6 @@ const RevenuePage = () => {
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 };
